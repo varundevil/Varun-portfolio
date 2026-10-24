@@ -440,21 +440,17 @@
 
         /* Projects Section */
 
-        .tab-container { display: flex; gap: 20px; margin-bottom: 40px; border-bottom: 2px solid var(--border); padding-bottom: 12px; }
+        .project-grid { 
 
-        
+            display: grid; 
 
-        /* Sub Headers - Montserrat Bold (700) */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
 
-        .tab-btn { background: none; border: none; color: var(--light-green); font-size: 1.3rem; font-weight: 700; font-family: 'Montserrat', sans-serif; cursor: pointer; transition: var(--transition); padding-bottom: 5px; position: relative; }
+            gap: 30px; 
 
-        .tab-btn.active { color: var(--dark-green); }
+            animation: fadeInGrid 0.5s ease-out forwards; 
 
-        .tab-btn.active::after { content: ''; position: absolute; bottom: -14px; left: 0; width: 100%; height: 3px; background: var(--dark-green); }
-
-        .project-grid { display: none; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; animation: fadeInGrid 0.5s ease-out forwards; }
-
-        .project-grid.active { display: grid; }
+        }
 
         @keyframes fadeInGrid { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
 
@@ -676,7 +672,7 @@
 
                     
 
-                    <div class="typo-graphics">Graphic</div>
+                    <div class="typo-graphics">GRAPHIC</div>
 
 
 
@@ -776,7 +772,7 @@
 
 
 
-                <!-- 3D Neo-Glow Software Icons -->
+                <!-- 3D Neo-Glow Software Icons Relative to Canvas -->
 
                 <div class="app-icon icon-ps">Ps</div>
 
@@ -964,19 +960,11 @@
 
         <h2>Selected Projects</h2>
 
-        <div class="tab-container">
-
-            <button class="tab-btn active" onclick="switchTab('images')">Images</button>
-
-            <button class="tab-btn" onclick="switchTab('videos')">Video</button>
-
-        </div>
-
-
+        
 
         <div id="swipe-area">
 
-            <!-- Image Projects pre-configured for the "projexts" folder -->
+            <!-- Image Projects pre-configured for the "projexts" folder (10 Items) -->
 
             <div class="project-grid active" id="grid-images">
 
@@ -1020,51 +1008,43 @@
 
                 </div>
 
-            </div>
-
-
-
-            <!-- Video Projects pre-configured for the "projexts" folder -->
-
-            <div class="project-grid" id="grid-videos">
-
                 <div class="project-card">
 
-                    <video src="projexts/Vi_pro_1.mp4" autoplay loop muted playsinline></video>
+                    <img src="projexts/im_pro_6.jpg" alt="Project 6">
 
-                    <span>Video Project 01</span>
+                    <span>Image Project 06</span>
 
                 </div>
 
                 <div class="project-card">
 
-                    <video src="projexts/Vi_pro_2.mp4" autoplay loop muted playsinline></video>
+                    <img src="projexts/im_pro_7.jpg" alt="Project 7">
 
-                    <span>Video Project 02</span>
-
-                </div>
-
-                <div class="project-card">
-
-                    <video src="projexts/Vi_pro_3.mp4" autoplay loop muted playsinline></video>
-
-                    <span>Video Project 03</span>
+                    <span>Image Project 07</span>
 
                 </div>
 
                 <div class="project-card">
 
-                    <video src="projexts/Vi_pro_4.mp4" autoplay loop muted playsinline></video>
+                    <img src="projexts/im_pro_8.jpg" alt="Project 8">
 
-                    <span>Video Project 04</span>
+                    <span>Image Project 08</span>
 
                 </div>
 
                 <div class="project-card">
 
-                    <video src="projexts/Vi_pro_5.mp4" autoplay loop muted playsinline></video>
+                    <img src="projexts/im_pro_9.jpg" alt="Project 9">
 
-                    <span>Video Project 05</span>
+                    <span>Image Project 09</span>
+
+                </div>
+
+                <div class="project-card">
+
+                    <img src="projexts/im_pro_10.jpg" alt="Project 10">
+
+                    <span>Image Project 10</span>
 
                 </div>
 
@@ -1186,26 +1166,6 @@
 
 
 
-        // React to Swiping
-
-        window.addEventListener('touchmove', (e) => {
-
-            isInteracting = true;
-
-            clearTimeout(interactTimeout);
-
-            interactTimeout = setTimeout(() => isInteracting = false, 800);
-
-            
-
-            tx = e.touches[0].clientX;
-
-            ty = e.touches[0].clientY - 60; // Float above the finger
-
-        }, {passive: true});
-
-
-
         // React to Mouse
 
         window.addEventListener('mousemove', (e) => {
@@ -1310,22 +1270,6 @@
 
 
 
-        // Tab Switching
-
-        function switchTab(type) {
-
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-
-            event.target.classList.add('active');
-
-            document.querySelectorAll('.project-grid').forEach(grid => grid.classList.remove('active'));
-
-            document.getElementById(`grid-${type}`).classList.add('active');
-
-        }
-
-
-
         function toggleContact() {
 
             const panel = document.getElementById('contact-panel');
@@ -1339,40 +1283,6 @@
             }
 
         }
-
-
-
-        let touchstartX = 0;
-
-        let touchendX = 0;
-
-        
-
-        function handleGesture() {
-
-            if (touchendX < touchstartX - 50) switchTabMobile('videos'); 
-
-            if (touchendX > touchstartX + 50) switchTabMobile('images'); 
-
-        }
-
-
-
-        function switchTabMobile(type) {
-
-            const btn = type === 'images' ? document.querySelectorAll('.tab-btn')[0] : document.querySelectorAll('.tab-btn')[1];
-
-            btn.click();
-
-        }
-
-
-
-        const swipeArea = document.getElementById('swipe-area');
-
-        swipeArea.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, {passive: true});
-
-        swipeArea.addEventListener('touchend', e => { touchendX = e.changedTouches[0].screenX; handleGesture(); }, {passive: true});
 
     </script>
 
