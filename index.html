@@ -438,27 +438,41 @@
 
 
 
-        /* Projects Section */
+        /* Masonry Style Projects Section (Flexible Heights for Different Size Uploads) */
 
         .project-grid { 
 
-            display: grid; 
+            display: block; 
 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            column-count: 3; 
 
-            gap: 30px; 
+            column-gap: 30px; 
 
             animation: fadeInGrid 0.5s ease-out forwards; 
 
         }
 
-        @keyframes fadeInGrid { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        
+
+        @media (max-width: 900px) { .project-grid { column-count: 2; } }
+
+        @media (max-width: 600px) { .project-grid { column-count: 1; } }
+
+
+
+        @keyframes fadeInGrid { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 
 
         .project-card { 
 
-            background: rgba(253, 245, 230, 0.85); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; 
+            background: rgba(253, 245, 230, 0.85); 
+
+            display: block; 
+
+            break-inside: avoid; 
+
+            margin-bottom: 30px; 
 
             border: 1.5px solid var(--border); transition: var(--transition); overflow: hidden; position: relative; 
 
@@ -466,9 +480,13 @@
 
         }
 
-        .project-card img, .project-card video {
+        /* Images dictate card height natively now */
 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; transition: var(--transition);
+        .project-card img {
+
+            display: block; width: 100%; height: auto;
+
+            z-index: 0; transition: var(--transition);
 
         }
 
@@ -486,17 +504,19 @@
 
         
 
-        /* Sub Headers - Montserrat Bold (700) */
+        /* Sub Headers - Centered correctly over variable height cards */
 
         .project-card span { 
 
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, calc(-50% + 15px)); width: 90%; text-align: center;
+
             z-index: 2; color: var(--bg-cream); font-size: 1.1rem; font-weight: 700; font-family: 'Montserrat', sans-serif; text-transform: uppercase; 
 
-            letter-spacing: 1.5px; transition: var(--transition); opacity: 0; transform: translateY(15px);
+            letter-spacing: 1.5px; transition: var(--transition); opacity: 0; 
 
         }
 
-        .project-card:hover span { opacity: 1; transform: translateY(0); }
+        .project-card:hover span { opacity: 1; transform: translate(-50%, -50%); }
 
 
 
