@@ -189,11 +189,23 @@
         .exp-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background-color: var(--dark-green); transition: left 0.6s cubic-bezier(0.25, 1, 0.5, 1); z-index: 0; }
         .exp-card:hover::before { left: 0; }
         .exp-card-content { position: relative; z-index: 1; transition: color 0.6s; }
-        .exp-card:hover .exp-card-content, .exp-card:hover .exp-card-content h3, .exp-card:hover .exp-card-content p { color: var(--bg-cream); }
+        .exp-card:hover .exp-card-content, .exp-card:hover .exp-card-content h3, .exp-card:hover .exp-card-content p, .exp-card:hover .exp-card-content ul { color: var(--bg-cream); }
         
         /* Sub Headers - Montserrat Bold (700) */
         .exp-card h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.85rem; margin-bottom: 6px; }
         .exp-card p.date { font-family: 'Montserrat', sans-serif; font-weight: 700; margin-bottom: 15px; letter-spacing: 0.5px; }
+        
+        /* List items for experience descriptions */
+        .exp-card ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 0;
+            color: var(--dark-green);
+            transition: color 0.6s;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+        .exp-card li { margin-bottom: 8px; }
 
         /* Skills Marquee */
         .skills-section { overflow: hidden; padding: 60px 0; background: var(--dark-green); color: var(--bg-cream); margin: 60px 0; box-shadow: 0 12px 35px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 25px; }
@@ -209,26 +221,26 @@
         .skill-btn:hover { background: var(--bg-cream); color: var(--dark-green); }
 
         /* Projects Section specific styles */
+        .category-wrapper {
+            margin-bottom: 60px;
+        }
+
         .category-header {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
+            font-size: 2rem;
+            font-weight: 900;
             color: var(--dark-green);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 50px;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px; /* Reduced gap since the line is moved below */
         }
         
-        .category-header::after {
-            content: '';
-            flex: 1;
+        .category-line {
+            width: 100%;
             height: 3px;
             background: var(--dark-green);
-            margin-left: 20px;
             opacity: 0.7;
+            margin-bottom: 40px; /* Gap below the line before grid starts */
         }
 
         /* Sub Headers - Montserrat Bold (700) */
@@ -444,27 +456,46 @@
     <section class="fade-in" id="experience">
         <h2>Experience</h2>
         <div class="experience-grid">
-            <div class="exp-card">
-                <div class="exp-card-content">
-                    <h3>Manager & Album Designer | 4K Digital Press, Mysuru</h3>
-                    <p class="date">2023 - 2024</p>
-                    <p>Designed numerous South Indian wedding albums and event photo books, working directly with clients to understand what they wanted and bringing their ideas to life. Coordinated closely with the design and production team to ensure every album matched the client's expectations and met high-quality standards. Because of strong client relationships and smooth project delivery, got promoted to Manager to handle overall client management, customer relations, and business accounts.</p>
-                </div>
-            </div>
+            
+            <!-- Lulu (Present) Shifted to First -->
             <div class="exp-card">
                 <div class="exp-card-content">
                     <h3>Creative Designer | Lulu International, Bengaluru</h3>
                     <p class="date">2025 - PRESENT</p>
-                    <p>Led end-to-end creative design for monthly offers leaflets and flyers across print and digital. Designed newspaper print ads and campaign creatives, collaborating with the marketing team to align with campaign timelines.</p>
+                    <ul>
+                        <li>Led end-to-end creative design for monthly offers leaflets and flyers across print and digital, from concept to final artwork/print-ready files.</li>
+                        <li>Designed newspaper print ads and other campaign creatives, ensuring strong brand consistency and high-quality execution.</li>
+                        <li>Collaborated closely with the marketing team to align creatives with Campaign timelines, messaging, and pricing updates—consistently delivering ahead of deadlines.</li>
+                    </ul>
                 </div>
             </div>
+
+            <!-- 4K Album Designing Shifted to Second -->
+            <div class="exp-card">
+                <div class="exp-card-content">
+                    <h3>Manager & Album Designer | 4K Digital Press, Mysuru</h3>
+                    <p class="date">2023 - 2024</p>
+                    <ul>
+                        <li>Designed numerous South Indian wedding albums and event photo books, working directly with clients to understand what they wanted and bringing their ideas to life.</li>
+                        <li>Coordinated closely with the design and production team to ensure every album matched the client's expectations and met high-quality standards.</li>
+                        <li>Because of strong client relationships and smooth project delivery, got promoted to Manager to handle overall client management, customer relations, and business accounts.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2D Jewelry Designer Shifted to Third -->
             <div class="exp-card">
                 <div class="exp-card-content">
                     <h3>2D Jewelry Designer | Sri Ragavendra Jewelry Works</h3>
                     <p class="date">2016 - 2022</p>
-                    <p>Designed custom ring, logo, and pattern concepts in CorelDRAW, managing the end-to-end workflow from design finalization to CNC machine handling.</p>
+                    <ul>
+                        <li>Designed custom ring, logo, and pattern concepts in CorelDRAW, converting customer briefs into accurate 2D production-ready designs.</li>
+                        <li>Managed the end-to-end workflow from design finalization to CNC machine handling, including file preparation and machining execution for ring manufacturing.</li>
+                        <li>Coordinated with the shop team to ensure design accuracy, manufacturability, and timely delivery, maintaining consistent quality standards across orders.</li>
+                    </ul>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -519,77 +550,83 @@
 
     <!-- Projects Section -->
     <section class="fade-in" id="projects">
-        <h2>Selected Projects</h2>
+        <h2>Recent Projects</h2>
         
         <!-- Retail Designs Category -->
-        <div class="category-header">Retail Designs</div>
-        
-        <div id="swipe-area-retail">
-            <!-- 5 Images -->
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="projexts/im_pro_1.jpg" alt="Retail Project 1">
-                    <span>Retail Project 01</span>
-                </div>
-                <div class="project-card">
-                    <img src="projexts/im_pro_2.jpg" alt="Retail Project 2">
-                    <span>Retail Project 02</span>
-                </div>
-                <div class="project-card">
-                    <img src="projexts/im_pro_3.jpg" alt="Retail Project 3">
-                    <span>Retail Project 03</span>
-                </div>
-                <div class="project-card">
-                    <img src="projexts/im_pro_4.jpg" alt="Retail Project 4">
-                    <span>Retail Project 04</span>
-                </div>
-                <div class="project-card">
-                    <img src="projexts/im_pro_5.jpg" alt="Retail Project 5">
-                    <span>Retail Project 05</span>
+        <div class="category-wrapper">
+            <div class="category-header">Retail Designs</div>
+            <div class="category-line"></div>
+            
+            <div id="swipe-area-retail">
+                <!-- 5 Images loaded as webp per instructions -->
+                <div class="project-grid active">
+                    <div class="project-card">
+                        <img src="projexts/im_pro_1.webp" alt="Retail Project 1">
+                        <span>Retail Project 01</span>
+                    </div>
+                    <div class="project-card">
+                        <img src="projexts/im_pro_2.webp" alt="Retail Project 2">
+                        <span>Retail Project 02</span>
+                    </div>
+                    <div class="project-card">
+                        <img src="projexts/im_pro_3.webp" alt="Retail Project 3">
+                        <span>Retail Project 03</span>
+                    </div>
+                    <div class="project-card">
+                        <img src="projexts/im_pro_4.webp" alt="Retail Project 4">
+                        <span>Retail Project 04</span>
+                    </div>
+                    <div class="project-card">
+                        <img src="projexts/im_pro_5.webp" alt="Retail Project 5">
+                        <span>Retail Project 05</span>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Album Designs & Photography Category -->
-        <div class="category-header">Album Designs & Photography</div>
-        
-        <div id="swipe-area-album">
-            <!-- 7 Images -->
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="projexts/im_pro_6.jpg" alt="Album Project 1">
-                    <span>Album Project 01</span>
-                </div>
-                <div class="project-card">
-                    <img src="projexts/im_pro_7.jpg" alt="Album Project 2">
-                    <span>Album Project 02</span>
-                </div>
-                <div class="project-card">
-                    <img src="projexts/im_pro_8.jpg" alt="Album Project 3">
-                    <span>Album Project 03</span>
-                </div>
-                <div class="project-card">
-                    <img src="projexts/im_pro_9.jpg" alt="Album Project 4">
-                    <span>Album Project 04</span>
-                </div>
-                <div class="project-card">
-                    <img src="projexts/im_pro_10.jpg" alt="Album Project 5">
-                    <span>Album Project 05</span>
-                </div>
-                <div class="project-card">
-                    <img src="projexts/im_pro_11.jpg" alt="Album Project 6">
-                    <span>Album Project 06</span>
-                </div>
-                <div class="project-card">
-                    <img src="projexts/im_pro_12.jpg" alt="Album Project 7">
-                    <span>Album Project 07</span>
+        <div class="category-wrapper">
+            <div class="category-header">Album Designs & Photography</div>
+            <div class="category-line"></div>
+            
+            <div id="swipe-area-album">
+                <!-- 7 Images loaded as webp per instructions -->
+                <div class="project-grid active">
+                    <div class="project-card">
+                        <img src="projexts/im_pro_6.webp" alt="Album Project 1">
+                        <span>Album Project 01</span>
+                    </div>
+                    <div class="project-card">
+                        <img src="projexts/im_pro_7.webp" alt="Album Project 2">
+                        <span>Album Project 02</span>
+                    </div>
+                    <div class="project-card">
+                        <img src="projexts/im_pro_8.webp" alt="Album Project 3">
+                        <span>Album Project 03</span>
+                    </div>
+                    <div class="project-card">
+                        <img src="projexts/im_pro_9.webp" alt="Album Project 4">
+                        <span>Album Project 04</span>
+                    </div>
+                    <div class="project-card">
+                        <img src="projexts/im_pro_10.webp" alt="Album Project 5">
+                        <span>Album Project 05</span>
+                    </div>
+                    <div class="project-card">
+                        <img src="projexts/im_pro_11.webp" alt="Album Project 6">
+                        <span>Album Project 06</span>
+                    </div>
+                    <div class="project-card">
+                        <img src="projexts/im_pro_12.webp" alt="Album Project 7">
+                        <span>Album Project 07</span>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Drive Link for more projects -->
         <div style="text-align: center;">
-            <a href="YOUR_GOOGLE_DRIVE_LINK_HERE" target="_blank" class="drive-link">For more Projects Click Here !!!</a>
+            <a href="https://drive.google.com/drive/folders/1d2EdyE_eT0U61nqM1l60psQNJUvuz_HX" target="_blank" class="drive-link">For more Projects Click Here !!!</a>
         </div>
         
     </section>
