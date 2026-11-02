@@ -326,136 +326,6 @@
     </svg>
 
     <!-- Swinging Hanging Mouse Menu -->
-    <div ip: 81%; right: clamp(-14px, 0.2vw, 10px); background: linear-gradient(145deg, #ea7600, #b55a00); color: #ffffff;
-            border: 2px solid #ff9d42; --rot: -8deg; animation-delay: -1.2s; text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.6);
-            box-shadow: inset 2px 2px 5px rgba(255,255,255,0.5), inset -3px -3px 8px rgba(0,0,0,0.6), 10px 18px 32px rgba(0,0,0,0.45);
-        }
-
-        /* SVG Overlays - Stylus Pen & Wired Mouse */
-        .svg-mouse-layer { position: absolute; top: 30%; left: clamp(20px, 5vw, 40px); width: 95%; height: 48%; z-index: 10; pointer-events: none; filter: drop-shadow(12px 22px 22px rgba(0,0,0,0.48)); }
-        .svg-pen-layer { position: absolute; bottom: 4%; left: clamp(10px, 3vw, 30px); width: 100%; height: 42%; z-index: 10; pointer-events: none; filter: drop-shadow(12px 22px 22px rgba(0,0,0,0.48)); }
-
-        /* Content Sections */
-        section { padding: 100px 5%; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-
-        /* UPGRADED SECTION HEADERS: Montserrat Black (900) & Theme Green */
-        .about h2, section h2 {
-            font-family: inherit;
-            font-size: clamp(3rem, 7vw, 4.5rem); 
-            font-weight: 900; /* Black */
-            margin-bottom: 30px; 
-            letter-spacing: 1px;
-            color: var(--dark-green);
-            text-transform: uppercase;
-            text-shadow: 2px 2px 0px rgba(253, 245, 230, 0.8), 3px 3px 15px rgba(0,0,0,0.08);
-            line-height: 1.1;
-        }
-
-        .about p { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 1.25rem; max-width: 820px; color: var(--light-green); background: rgba(253, 245, 230, 0.85); padding: 24px; border-radius: 12px; border: 1px solid rgba(11, 59, 36, 0.12); }
-
-        /* Experience Grid */
-        .experience-grid { display: flex; flex-direction: column; gap: 22px; margin-top: 40px; }
-        .exp-card { border: 1px solid var(--border); padding: 32px; border-radius: 12px; position: relative; overflow: hidden; background: rgba(253, 245, 230, 0.75); box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
-        .exp-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background-color: var(--dark-green); transition: left 0.6s cubic-bezier(0.25, 1, 0.5, 1); z-index: 0; }
-        .exp-card:hover::before { left: 0; }
-        .exp-card-content { position: relative; z-index: 1; transition: color 0.6s; }
-        .exp-card:hover .exp-card-content, .exp-card:hover .exp-card-content h3, .exp-card:hover .exp-card-content p { color: var(--bg-cream); }
-        
-        /* Sub Headers - Montserrat Bold (700) */
-        .exp-card h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.85rem; margin-bottom: 6px; }
-        .exp-card p.date { font-family: 'Montserrat', sans-serif; font-weight: 700; margin-bottom: 15px; letter-spacing: 0.5px; }
-
-        /* Skills Marquee */
-        .skills-section { overflow: hidden; padding: 60px 0; background: var(--dark-green); color: var(--bg-cream); margin: 60px 0; box-shadow: 0 12px 35px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 25px; }
-        .skills-marquee { display: flex; white-space: nowrap; width: fit-content; }
-        .skills-marquee:hover { animation-play-state: paused; }
-        .row-1 { animation: scrollMarquee 15s linear infinite; }
-        .row-2 { animation: scrollMarqueeReverse 15s linear infinite; }
-        @keyframes scrollMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @keyframes scrollMarqueeReverse { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
-
-        /* Sub Headers - Montserrat Bold (700) */
-        .skill-btn { display: inline-block; padding: 16px 42px; margin: 0 15px; border: 2px solid var(--bg-cream); border-radius: 50px; font-size: 1.25rem; font-weight: 700; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px; background: transparent; color: var(--bg-cream); transition: all 0.3s; }
-        .skill-btn:hover { background: var(--bg-cream); color: var(--dark-green); }
-
-        /* Masonry Style Projects Section (Flexible Heights for Different Size Uploads) */
-        .project-grid { 
-            display: none; 
-            column-count: 3; 
-            column-gap: 30px; 
-            animation: fadeInGrid 0.5s ease-out forwards; 
-        }
-        .project-grid.active { display: block; }
-        
-        @media (max-width: 900px) { .project-grid { column-count: 2; } }
-        @media (max-width: 600px) { .project-grid { column-count: 1; } }
-
-        @keyframes fadeInGrid { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .project-card { 
-            background: rgba(253, 245, 230, 0.85); 
-            display: block; 
-            break-inside: avoid; 
-            margin-bottom: 30px; 
-            border: 1.5px solid var(--border); transition: var(--transition); overflow: hidden; position: relative; 
-            border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.04); cursor: pointer;
-        }
-        /* Images dictate card height natively now */
-        .project-card img {
-            display: block; width: 100%; height: auto;
-            z-index: 0; transition: var(--transition);
-        }
-        .project-card::after {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--dark-green); opacity: 0; transition: var(--transition); z-index: 1;
-        }
-        .project-card:hover { transform: scale(1.025); border-color: var(--accent); }
-        .project-card:hover::after { opacity: 0.85; }
-        
-        /* Sub Headers - Centered correctly over variable height cards */
-        .project-card span { 
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, calc(-50% + 15px)); width: 90%; text-align: center;
-            z-index: 2; color: var(--bg-cream); font-size: 1.1rem; font-weight: 700; font-family: 'Montserrat', sans-serif; text-transform: uppercase; 
-            letter-spacing: 1.5px; transition: var(--transition); opacity: 0; 
-        }
-        .project-card:hover span { opacity: 1; transform: translate(-50%, -50%); }
-
-        /* Contact Section */
-        .contact-trigger { background: var(--dark-green); color: var(--bg-cream); border: none; padding: 18px 46px; font-size: 1.2rem; font-weight: 700; font-family: 'Montserrat', sans-serif; border-radius: 50px; transition: var(--transition); margin-top: 40px; letter-spacing: 1px; cursor: pointer; }
-        .contact-trigger:hover { background: var(--light-green); transform: scale(1.05); }
-        .contact-panel { display: none; margin-top: 50px; padding: 50px; background: rgba(253, 245, 230, 0.95); border: 2px solid var(--border); border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); }
-        .contact-panel.active { display: block; animation: slideUp 0.5s ease-out forwards; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .contact-details { margin-bottom: 40px; }
-        
-        /* Sub Headers - Montserrat Bold (700) */
-        .contact-details h3 { font-size: 1.8rem; font-weight: 700; font-family: 'Montserrat', sans-serif; margin-bottom: 12px; }
-        .contact-details p { font-size: 1.1rem; color: var(--light-green); }
-
-        form { display: flex; flex-direction: column; gap: 24px; }
-        input { background: transparent; border: none; border-bottom: 2px solid var(--border); padding: 16px 0; color: var(--dark-green); font-size: 1.1rem; font-weight: 700; font-family: 'Montserrat', sans-serif; outline: none; transition: var(--transition); }
-        input::placeholder { color: var(--light-green); font-weight: 500; font-family: 'Montserrat', sans-serif; }
-        input:focus { border-bottom-color: #00BFFF; }
-        button[type="submit"] { background: transparent; color: var(--dark-green); border: 2px solid var(--dark-green); padding: 16px; transition: var(--transition); border-radius: 50px; margin-top: 10px; font-size: 1.1rem; font-weight: 700; font-family: 'Montserrat', sans-serif; cursor: pointer; text-transform: uppercase; }
-        button[type="submit"]:hover { background: var(--dark-green); color: var(--bg-cream); }
-    </style>
-</head>
-<body>
-
-    <!-- Ambient Live Background Shapes -->
-    <div class="bg-shapes">
-        <div class="shape shape1"></div>
-        <div class="shape shape2"></div>
-        <div class="shape shape3"></div>
-    </div>
-
-    <!-- Paper Plane SVG that flies around -->
-    <svg id="paper-plane" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="var(--dark-green)"/>
-    </svg>
-
-    <!-- Swinging Hanging Mouse Menu -->
     <div id="mouse-menu-container" onclick="handleMenuClick(event)" title="Click to open menu">
         <svg class="hanging-mouse-svg" viewBox="0 0 100 320" xmlns="http://www.w3.org/2000/svg">
             <path d="M50,0 C45,60 55,120 50,180" stroke="var(--dark-green)" stroke-width="4.5" fill="none"/>
@@ -573,30 +443,26 @@
     <!-- Experience Section -->
     <section class="fade-in" id="experience">
         <h2>Experience</h2>
-            <div class="exp-card">
-                <div class="exp-card-content">
-                    <h3>Creative Designer | Lulu International, Bengaluru</h3>
-                    <p class="date">2025 - PRESENT</p>
-                    <p>Led end-to-end creative design for monthly offers leaflets and flyers across print and digital, from concept to final artwork/print-ready files. Designed newspaper print ads and other campaign creatives, ensuring strong brand consistency and
-                        high-quality execution. Collaborated closely with the marketing team to align creatives with Campaign timelines, messaging, and pricing updates—consistently delivering ahead of deadlines.</p>
-                </div>
-            </div>
         <div class="experience-grid">
             <div class="exp-card">
                 <div class="exp-card-content">
                     <h3>Manager & Album Designer | 4K Digital Press, Mysuru</h3>
                     <p class="date">2023 - 2024</p>
-                    <p>Designed numerous South Indian wedding albums and event photo books, working directly with clients to understand what they wanted and bringing their ideas to life. Coordinated closely with the design and production team to ensure every album matched
-                        the client's expectations and met high-quality standards. Because of strong client relationships and smooth project delivery, got promoted to Manager to handle overall client management, customer relations, and business accounts.
-</p>
+                    <p>Designed numerous South Indian wedding albums and event photo books, working directly with clients to understand what they wanted and bringing their ideas to life. Coordinated closely with the design and production team to ensure every album matched the client's expectations and met high-quality standards. Because of strong client relationships and smooth project delivery, got promoted to Manager to handle overall client management, customer relations, and business accounts.</p>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-card-content">
+                    <h3>Creative Designer | Lulu International, Bengaluru</h3>
+                    <p class="date">2025 - PRESENT</p>
+                    <p>Led end-to-end creative design for monthly offers leaflets and flyers across print and digital. Designed newspaper print ads and campaign creatives, collaborating with the marketing team to align with campaign timelines.</p>
                 </div>
             </div>
             <div class="exp-card">
                 <div class="exp-card-content">
                     <h3>2D Jewelry Designer | Sri Ragavendra Jewelry Works</h3>
                     <p class="date">2016 - 2022</p>
-                    <p>Designed custom ring, logo, and pattern concepts in CorelDRAW, converting customer  briefs into accurate 2D production-ready designs. Managed the end-to-end workflow from design finalization to CNC machine handling, including file preparation and
-                        machining execution for ring manufacturing. Coordinated with the shop team to ensure design accuracy, manufacturability, and timely delivery, maintaining consistent quality standards across orders.</p>
+                    <p>Designed custom ring, logo, and pattern concepts in CorelDRAW, managing the end-to-end workflow from design finalization to CNC machine handling.</p>
                 </div>
             </div>
         </div>
@@ -607,7 +473,7 @@
         <!-- Row 1 -->
         <div class="skills-marquee row-1">
             <div class="skill-btn">Adobe Photoshop</div>
-            <div class="skill-btn">Album Designer</div> <!-- Added New Skill -->
+            <div class="skill-btn">Album Designer</div> 
             <div class="skill-btn">Adobe Illustrator</div>
             <div class="skill-btn">After Effects</div>
             <div class="skill-btn">Blender (3D)</div>
@@ -631,7 +497,7 @@
         <div class="skills-marquee row-2">
             <div class="skill-btn">Typography</div>
             <div class="skill-btn">Brand Consistency</div>
-            <div class="skill-btn">Client & Customer Coordination</div> <!-- Added New Skill -->
+            <div class="skill-btn">Client & Customer Coordination</div> 
             <div class="skill-btn">Campaign Management</div>
             <div class="skill-btn">DaVinci Resolve</div>
             <div class="skill-btn">ShotCut</div>
@@ -655,51 +521,77 @@
     <section class="fade-in" id="projects">
         <h2>Selected Projects</h2>
         
-        <div id="swipe-area">
-            <!-- Image Projects pre-configured for the "projexts" folder (10 Items) -->
-            <div class="project-grid active" id="grid-images">
+        <!-- Retail Designs Category -->
+        <div class="category-header">Retail Designs</div>
+        
+        <div id="swipe-area-retail">
+            <!-- 5 Images -->
+            <div class="project-grid">
                 <div class="project-card">
-                    <img src="projexts/im_pro_1.jpg" alt="Project 1">
-                    <span>Image Project 01</span>
+                    <img src="projexts/im_pro_1.jpg" alt="Retail Project 1">
+                    <span>Retail Project 01</span>
                 </div>
                 <div class="project-card">
-                    <img src="projexts/im_pro_2.jpg" alt="Project 2">
-                    <span>Image Project 02</span>
+                    <img src="projexts/im_pro_2.jpg" alt="Retail Project 2">
+                    <span>Retail Project 02</span>
                 </div>
                 <div class="project-card">
-                    <img src="projexts/im_pro_3.jpg" alt="Project 3">
-                    <span>Image Project 03</span>
+                    <img src="projexts/im_pro_3.jpg" alt="Retail Project 3">
+                    <span>Retail Project 03</span>
                 </div>
                 <div class="project-card">
-                    <img src="projexts/im_pro_4.jpg" alt="Project 4">
-                    <span>Image Project 04</span>
+                    <img src="projexts/im_pro_4.jpg" alt="Retail Project 4">
+                    <span>Retail Project 04</span>
                 </div>
                 <div class="project-card">
-                    <img src="projexts/im_pro_5.jpg" alt="Project 5">
-                    <span>Image Project 05</span>
-                </div>
-                <div class="project-card">
-                    <img src="projexts/im_pro_6.jpg" alt="Project 6">
-                    <span>Image Project 06</span>
-                </div>
-                <div class="project-card">
-                    <img src="projexts/im_pro_7.jpg" alt="Project 7">
-                    <span>Image Project 07</span>
-                </div>
-                <div class="project-card">
-                    <img src="projexts/im_pro_8.jpg" alt="Project 8">
-                    <span>Image Project 08</span>
-                </div>
-                <div class="project-card">
-                    <img src="projexts/im_pro_9.jpg" alt="Project 9">
-                    <span>Image Project 09</span>
-                </div>
-                <div class="project-card">
-                    <img src="projexts/im_pro_10.jpg" alt="Project 10">
-                    <span>Image Project 10</span>
+                    <img src="projexts/im_pro_5.jpg" alt="Retail Project 5">
+                    <span>Retail Project 05</span>
                 </div>
             </div>
         </div>
+
+        <!-- Album Designs & Photography Category -->
+        <div class="category-header">Album Designs & Photography</div>
+        
+        <div id="swipe-area-album">
+            <!-- 7 Images -->
+            <div class="project-grid">
+                <div class="project-card">
+                    <img src="projexts/im_pro_6.jpg" alt="Album Project 1">
+                    <span>Album Project 01</span>
+                </div>
+                <div class="project-card">
+                    <img src="projexts/im_pro_7.jpg" alt="Album Project 2">
+                    <span>Album Project 02</span>
+                </div>
+                <div class="project-card">
+                    <img src="projexts/im_pro_8.jpg" alt="Album Project 3">
+                    <span>Album Project 03</span>
+                </div>
+                <div class="project-card">
+                    <img src="projexts/im_pro_9.jpg" alt="Album Project 4">
+                    <span>Album Project 04</span>
+                </div>
+                <div class="project-card">
+                    <img src="projexts/im_pro_10.jpg" alt="Album Project 5">
+                    <span>Album Project 05</span>
+                </div>
+                <div class="project-card">
+                    <img src="projexts/im_pro_11.jpg" alt="Album Project 6">
+                    <span>Album Project 06</span>
+                </div>
+                <div class="project-card">
+                    <img src="projexts/im_pro_12.jpg" alt="Album Project 7">
+                    <span>Album Project 07</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drive Link for more projects -->
+        <div style="text-align: center;">
+            <a href="YOUR_GOOGLE_DRIVE_LINK_HERE" target="_blank" class="drive-link">For more Projects Click Here !!!</a>
+        </div>
+        
     </section>
 
     <!-- Contact Section -->
